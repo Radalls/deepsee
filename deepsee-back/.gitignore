@@ -1,0 +1,43 @@
+./node_modules
+# Dependency directories
+node_modules/
+
+# Environment variables file
+.env
+
+# Editor/IDE files
+.vscode/
+.idea/
+
+# Compiled output
+dist/
+
+# Logs
+logs/
+*.log
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Environment-specific files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Jest
+node_modules/.cache/
+coverage
+
+# docker compose
+docker-compose.yml
+
+# init-db.sql
+init-db.sql
+
+# GMeet
+credentials.json
+token.json

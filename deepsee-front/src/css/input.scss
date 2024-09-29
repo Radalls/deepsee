@@ -1,0 +1,33 @@
+.label {
+    font-weight: 600;
+    margin-bottom: 4px;
+    transition: color 0.2s;
+}
+
+.input:has(textarea:focus, input:focus, .select-input:focus) .label {
+    color: #00b2ca;
+}
+
+input:focus-visible,
+textarea:focus-visible {
+    outline: none;
+}
+
+input,
+textarea,
+.select-input {
+    border: 2px solid #D9D9D9;
+    border-radius: 4px;
+    font-family: 'Montserrat', sans-serif;
+    min-height: 16px;
+    padding: 8px;
+    resize: none;
+    transition: border-color 0.2s;
+    width: calc(100% - 20px);
+}
+
+input:focus,
+textarea:focus,
+.select-input:focus {
+    border-color: #00b2ca;
+}

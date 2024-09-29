@@ -1,0 +1,30 @@
+name: CD Pipeline Front
+
+on:
+  workflow_run:
+    workflows: ["CI Pipeline Front"]
+    types:
+      - completed
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    steps:
+      - name: Pull Docker image
+        run: sudo docker pull titeshi/deepsee-front:latest
+
+      - name: Delete Old docker container
+        run: sudo docker rm -f deepsee-front-container || true
+
+      - name: Run Docker Container
+        run: sudo docker run -d -p 8080:8080 --name deepsee-front-container titeshi/deepsee-front
+
+      - name: Remove old Docker image
+        run: sudo docker image rm titeshi/deepsee-front:latest || true
+
+      - name: Clean NGINX HTML directory
+        run: sudo rm -rf /usr/share/nginx/html/*
+
+      - name: Copy files from Docker container to NGINX HTML directory
+        run: sudo docker cp deepsee-front-container:/app/dist/. /usr/share/nginx/html

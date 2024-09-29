@@ -1,0 +1,1038 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Deepsee - API",
+    "description": "Application de recrutement",
+    "version": "1.0.0"
+  },
+  "externalDocs": {
+    "description": "Doc Notion",
+    "url": "https://www.notion.so/Deepsee-2669fb74b68a41588b6956e934943581"
+  },
+  "servers": [
+    {
+      "url": "https://deepsee.fr/api"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Auth",
+      "description": "Authentification"
+    },
+    {
+      "name": "Candidacies",
+      "description": "Candidatures"
+    },
+    {
+      "name": "Jobs",
+      "description": "Offre d'emploi"
+    },
+    {
+      "name": "Recruiters",
+      "description": "Recruteurs"
+    },
+    {
+      "name": "Talents"
+    },
+    {
+      "name": "Users"
+    },
+    {
+      "name": "Chat"
+    },
+    {
+      "name": "Sub"
+    }
+  ],
+  "paths": {
+    "/auth/signin": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "Connecte un utilisateur",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SigninRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/auth/signout": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "Déconnecte un utilisateur",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/auth/signup-user": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "Créer un utilisateur",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignupUserRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/auth/signup-company": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "Créer un espace entreprise",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignupCompanyRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/auth/reset-password": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "Demande une réinitialisation de mot de passe",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResetPasswordRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/auth/update-password": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "Met à jour le mot de passe",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePasswordRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/auth/join-company": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "Rejoindre un espace entreprise",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JoinCompanyRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/candidacies/talents/{talentId}/get-candidacies-by-talent": {
+      "get": {
+        "tags": [
+          "Candidacies"
+        ],
+        "description": "Récupère les candidatures d'un talent",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/candidacies/jobs/{jobOfferId}/get-candidacies-for-job": {
+      "get": {
+        "tags": [
+          "Candidacies"
+        ],
+        "description": "Récupère les candidatures pour une offre d'emploi",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/candidacies/{candidacyId}/get-candidacy": {
+      "get": {
+        "tags": [
+          "Candidacies"
+        ],
+        "description": "Récupère une candidature",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/candidacies/{candidacyId}/delete-candidacy": {
+      "delete": {
+        "tags": [
+          "Candidacies"
+        ],
+        "description": "Supprime une candidature",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/candidacies/talents/{talentId}/jobs/{jobOfferId}/get-candidacy-by-talent-for-job": {
+      "get": {
+        "tags": [
+          "Candidacies"
+        ],
+        "description": "Récupère une candidature d'un talent pour une offre d'emploi",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/candidacies/create-candidacy": {
+      "post": {
+        "tags": [
+          "Candidacies"
+        ],
+        "description": "Crée une candidature",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCandidacyRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/candidacies/create-meeting": {
+      "post": {
+        "tags": [
+          "Candidacies"
+        ],
+        "description": "Crée un rendez-vous",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/candidacies/{candidacyId}/status/update-candidacy-status": {
+      "patch": {
+        "tags": [
+          "Candidacies"
+        ],
+        "description": "Met à jour le statut d'une candidature",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/jobs/search-jobs": {
+      "get": {
+        "tags": [
+          "Jobs"
+        ],
+        "description": "Recherche des offres d'emploi",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/jobs/suggestions/{talentId}/get-jobs-suggestions-for-talent": {
+      "get": {
+        "tags": [
+          "Jobs"
+        ],
+        "description": "Récupère des suggestions d'offres d'emploi pour un talent",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/jobs/companies/{companyId}/get-jobs-for-company": {
+      "get": {
+        "tags": [
+          "Jobs"
+        ],
+        "description": "Récupère les offres d'emploi d'une entreprise",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/jobs/tests/{jobOfferTestId}/get-jobs-test": {
+      "get": {
+        "tags": [
+          "Jobs"
+        ],
+        "description": "Récupère un test de recrutement",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/jobs/tests/{jobOfferTestId}/talents/{talentId}/create-test-session-for-talent": {
+      "post": {
+        "tags": [
+          "Jobs"
+        ],
+        "description": "Crée une session de test de recrutement pour un talent",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/jobs/{jobOfferId}/get-job": {
+      "get": {
+        "tags": [
+          "Jobs"
+        ],
+        "description": "Récupère une offre d'emploi",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/jobs/{jobOfferId}/update-job": {
+      "patch": {
+        "tags": [
+          "Jobs"
+        ],
+        "description": "Met à jour une offre d'emploi",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/jobs/create-job": {
+      "post": {
+        "tags": [
+          "Jobs"
+        ],
+        "description": "Crée une offre d'emploi",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/jobs/{jobOfferId}/status/update-job-status": {
+      "patch": {
+        "tags": [
+          "Jobs"
+        ],
+        "description": "Met à jour le statut d'une offre d'emploi",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/jobs/tests/{jobOfferTestId}/run/update-test-session": {
+      "patch": {
+        "tags": [
+          "Jobs"
+        ],
+        "description": "Met à jour le statut d'une session de test de recrutement",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/recruiters/{recruiterId}/get-recruiter": {
+      "get": {
+        "tags": [
+          "Recruiters"
+        ],
+        "description": "Récupère un recruteur",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/recruiters/companies/{companyName}/get-company-by-name": {
+      "get": {
+        "tags": [
+          "Recruiters"
+        ],
+        "description": "Récupère une entreprise",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/recruiters/companies/{companyId}/update-company": {
+      "patch": {
+        "tags": [
+          "Recruiters"
+        ],
+        "description": "Met à jour une entreprise",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/recruiters/companies/{companyId}/delete-company": {
+      "delete": {
+        "tags": [
+          "Recruiters"
+        ],
+        "description": "Supprime une entreprise",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/recruiters/companies/{companyId}/invite-collaborator": {
+      "post": {
+        "tags": [
+          "Recruiters"
+        ],
+        "description": "Invite un collaborateur à rejoindre l'espace entreprise",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/talents/{talentId}/filters/get-filters": {
+      "get": {
+        "tags": [
+          "Talents"
+        ],
+        "description": "Récupère les filtres enregistrés d'un talent",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/talents/{talentId}/filters/create-filter": {
+      "post": {
+        "tags": [
+          "Talents"
+        ],
+        "description": "Enregistre un filtre",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/talents/{talentId}/filters/delete-filter": {
+      "delete": {
+        "tags": [
+          "Talents"
+        ],
+        "description": "Supprime un filtre",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/talents/{talentId}/get-talent": {
+      "get": {
+        "tags": [
+          "Talents"
+        ],
+        "description": "Récupère un talent",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/talents/{talentId}/update-talent": {
+      "patch": {
+        "tags": [
+          "Talents"
+        ],
+        "description": "Met à jour un talent",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/talents/{talentId}/work-experience/create-work-experience": {
+      "post": {
+        "tags": [
+          "Talents"
+        ],
+        "description": "Ajoute une expérience professionnelle",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/talents/{talentId}/work-experience/update-work-experience": {
+      "patch": {
+        "tags": [
+          "Talents"
+        ],
+        "description": "Met à jour une expérience professionnelle",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/talents/{talentId}/work-experience/delete-work-experience": {
+      "delete": {
+        "tags": [
+          "Talents"
+        ],
+        "description": "Supprime une expérience professionnelle",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/talents/{talentId}/education-experience/create-education-experience": {
+      "post": {
+        "tags": [
+          "Talents"
+        ],
+        "description": "Ajoute une formation",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/talents/{talentId}/education-experience/update-education-experience": {
+      "patch": {
+        "tags": [
+          "Talents"
+        ],
+        "description": "Met à jour une formation",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/talents/{talentId}/education-experience/delete-education-experience": {
+      "delete": {
+        "tags": [
+          "Talents"
+        ],
+        "description": "Supprime une formation",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/talents/{talentId}/recommandation/create-recommandation": {
+      "post": {
+        "tags": [
+          "Talents"
+        ],
+        "description": "Ajoute une recommandation",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/talents/{talentId}/recommandation/update-recommandation": {
+      "patch": {
+        "tags": [
+          "Talents"
+        ],
+        "description": "Met à jour une recommandation",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/talents/{talentId}/recommandation/delete-recommandation": {
+      "delete": {
+        "tags": [
+          "Talents"
+        ],
+        "description": "Supprime une recommandation",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/talents/{talentId}/skills/update-skills": {
+      "patch": {
+        "tags": [
+          "Talents"
+        ],
+        "description": "Met à jour les compétences d'un talent",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/users/{userId}/delete-user": {
+      "delete": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Supprime un utilisateur",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/users/identify-user": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Identifie un utilisateur",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/chat/talents/{talentId}/get-talent-conversations": {
+      "get": {
+        "tags": [
+          "Chat"
+        ],
+        "description": "Récupère les conversations d'un talent",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/chat/companies/{companyId}/get-company-conversations": {
+      "get": {
+        "tags": [
+          "Chat"
+        ],
+        "description": "Récupère les conversations d'une entreprise",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/chat/candidacies/{candidacyId}/get-candidacy-conversation": {
+      "get": {
+        "tags": [
+          "Chat"
+        ],
+        "description": "Récupère les messages d'une candidature",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/chat/conversations/{conversationId}/get-conversation": {
+      "get": {
+        "tags": [
+          "Chat"
+        ],
+        "description": "Récupère les messages d'une conversation",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/chat/conversations/create-conversation": {
+      "post": {
+        "tags": [
+          "Chat"
+        ],
+        "description": "Crée une conversation",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/chat/messages/create-message": {
+      "post": {
+        "tags": [
+          "Chat"
+        ],
+        "description": "Envoie un message",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/chat/wss": {
+      "get": {
+        "tags": [
+          "Chat"
+        ],
+        "description": "Connexion WebSocket",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/sub/session/get-subscription": {
+      "get": {
+        "tags": [
+          "Sub"
+        ],
+        "description": "Récupère une session",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/sub/session/create-subscription": {
+      "post": {
+        "tags": [
+          "Sub"
+        ],
+        "description": "Crée une session",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/sub/portal/create-portal": {
+      "post": {
+        "tags": [
+          "Sub"
+        ],
+        "description": "Crée un portail",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/sub/webhook": {
+      "post": {
+        "tags": [
+          "Sub"
+        ],
+        "description": "Webhook",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "SigninRequest": {
+        "type": "object",
+        "properties": {
+          "email": { 
+            "type": "string",
+            "example": "test@example.com",
+            "nullable": false
+          },
+          "password": { 
+            "type": "string",
+            "example": "xxxxxx",
+            "nullable": false
+          }
+        }
+      },
+      "SignupUserRequest": {
+        "type": "object",
+        "properties": {
+          "companyId": {
+            "type": "number",
+            "example": "2",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "example": "test@test.com",
+            "nullable": false
+          },
+          "firstName": {
+            "type": "string",
+            "example": "Test",
+            "nullable": false
+          },
+          "lastName": {
+            "type": "string",
+            "example": "Test",
+            "nullable": false
+          },
+          "password": {
+            "type": "string",
+            "example": "xxxxxx",
+            "nullable": false
+          },
+          "role": {
+            "type": "string",
+            "example": "recruiter",
+            "enum": ["talent", "recruiter"],
+            "nullable": false
+          }
+        }
+      },
+      "SignupCompanyRequest": {
+        "type": "object",
+        "properties": {
+          "_ownerId": {
+            "type": "number",
+            "example": "2",
+            "nullable": false
+          },
+          "business": {
+            "type": "string",
+            "example": "Bancaire",
+            "nullable": false
+          },
+          "description": {
+            "type": "string",
+            "example": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            "nullable": false
+          },
+          "name": {
+            "type": "string",
+            "example": "Super Banque",
+            "nullable": false
+          }
+        }
+      },
+      "ResetPasswordRequest": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "test@test.com",
+            "nullable": false
+          }
+        }
+      },
+      "UpdatePasswordRequest": {
+        "type": "object",
+        "properties": {
+          "password": {
+            "type": "string",
+            "example": "xxxxxx",
+            "nullable": false
+          },
+          "token": {
+            "type": "string",
+            "nullable": false
+          }
+        }
+      },
+      "JoinCompanyRequest": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "243567",
+            "nullable": false
+          }
+        }
+      },
+      "CreateCandidacyRequest": {
+        "type": "object",
+        "properties": {
+          "jobOfferId": {
+            "type": "number",
+            "example": "2",
+            "nullable": false
+          },
+          "talentId": {
+            "type": "number",
+            "example": "3",
+            "nullable": false
+          },
+          "message": {
+            "type": "string",
+            "example": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            "nullable": true
+          }
+        }
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 10
+          },
+          "firstName": {
+            "type": "string",
+            "example": "John"
+          },
+          "lastName": {
+            "type": "string",
+            "example": "James"
+          },
+          "email": {
+            "type": "string",
+            "example": "john@email.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "12345"
+          }
+        }
+      },
+      "SignInResponse": {
+        "type": "object",
+        "properties": {
+          "token": { 
+            "type": "string"
+          },
+          "user": { 
+            "$ref": "#/components/schemas/User"
+          }
+        }
+      }
+    }
+  }
+}

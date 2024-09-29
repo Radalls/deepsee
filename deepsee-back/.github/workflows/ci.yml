@@ -1,0 +1,33 @@
+name: CI Pipeline Back
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up environment from .env
+        run: echo "${{ secrets.ENV_FILE }}" | base64 -d > .env
+
+      - name: Set up credentials for meet
+        run: echo "${{ secrets.MEET_CREDENTIALS_FILE }}" | base64 -d > credentials.json
+
+      - name: Set up token for meet
+        run: echo "${{ secrets.MEET_TOKEN_FILE }}" | base64 -d > token.json
+
+      - name: Login Dockerhub
+        env:
+          DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
+          DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+        run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+
+      - name: Build the Docker image
+        run: docker build -t titeshi/deepsee-back .
+
+      - name: Push to Dockerhub
+        run: docker push titeshi/deepsee-back:latest

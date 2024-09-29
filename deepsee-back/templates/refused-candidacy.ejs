@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <div style="font-size: 16px;">Bonjour <%= receiverName %>,</div>
+    <div style="font-size: 20px; color: #00b2ca; font-weight: 600; margin: 8px 0; padding: 8px; border: 4px solid #00b2ca; border-radius: 4px; width: fit-content;">😥 Nous sommes désolé...</div>
+
+    <div style="font-size: 16px;">Vous avez été refusé pour le poste <%= jobOfferTitle %> publiée par l'entreprise <%= companyName %></div>
+    <div style="font-size: 16px; margin-bottom: 8px;">N'abandonnez pas ! Continuer de chercher des offres qui vous correspondent !</div>
+
+    <a href="<%= url %>/talent/<%= talentId %>/search">
+        <button 
+            style="background-color: #00b2ca; color: white; font-size: 16px; padding: 12px; border: none; border-radius: 4px; font-weight: 600; cursor: pointer;"
+        >Chercher des offres d'emplois</button>
+    </a>
+</body>
+</html>
